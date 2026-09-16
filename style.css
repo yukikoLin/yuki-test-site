@@ -60,9 +60,46 @@ button {
 }
 button:hover { transform: translateY(-3px); background: var(--rose); box-shadow: 0 14px 28px rgba(201,103,114,.3); }
 button:active { transform: translateY(0) scale(.98); }
-.message { min-height: 24px; margin-top: 18px; color: #927b70; font-size: 13px; }
+.message {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: 5;
+  width: max-content;
+  max-width: min(360px, 92%);
+  margin: 0;
+  padding: 15px 21px;
+  transform: translateX(-50%);
+  border: 2px solid var(--cocoa);
+  border-radius: 18px;
+  color: var(--cocoa);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.55;
+  text-align: center;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 10px 22px rgba(79,61,53,.14);
+}
+.message::before {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateX(-50%) rotate(45deg);
+  border-top: 2px solid var(--cocoa);
+  border-left: 2px solid var(--cocoa);
+  background: white;
+}
+.message.pop { animation: message-pop .45s ease both; }
+@keyframes message-pop {
+  0% { opacity: .25; transform: translateX(-50%) scale(.82); }
+  65% { transform: translateX(-50%) scale(1.06); }
+  100% { opacity: 1; transform: translateX(-50%) scale(1); }
+}
 
-.scene { position: relative; min-height: 390px; display: grid; place-items: center; }
+.scene { position: relative; min-height: 460px; display: grid; place-items: center; padding-bottom: 70px; }
 .halo { position: absolute; width: 330px; height: 330px; border-radius: 50%; background: radial-gradient(circle, #fff 0 38%, var(--blush) 39% 60%, transparent 61%); opacity: .82; }
 .bunny { position: relative; z-index: 1; width: 235px; height: 310px; transform-origin: 50% 100%; transition: transform .25s ease; }
 .ear { position: absolute; top: 0; width: 66px; height: 140px; border: 3px solid var(--cocoa); border-radius: 55% 55% 45% 45%; background: var(--cream); }
@@ -82,7 +119,7 @@ button:active { transform: translateY(0) scale(.98); }
 .paw { position: absolute; top: 33px; width: 44px; height: 70px; border: 3px solid var(--cocoa); border-radius: 50%; background: var(--cream); }
 .paw-left { left: -17px; transform: rotate(22deg); }
 .paw-right { right: -17px; transform: rotate(-22deg); }
-.shadow { position: absolute; bottom: 15px; width: 220px; height: 34px; border-radius: 50%; background: rgba(79,61,53,.16); filter: blur(8px); }
+.shadow { position: absolute; bottom: 73px; width: 220px; height: 34px; border-radius: 50%; background: rgba(79,61,53,.16); filter: blur(8px); }
 .sparkle { position: absolute; color: var(--rose); font-size: 36px; }
 .sparkle-one { top: 52px; right: 65px; }
 .sparkle-two { right: 40%; bottom: 64px; }
@@ -95,7 +132,7 @@ button:active { transform: translateY(0) scale(.98); }
   body { padding: 16px; }
   .card { min-height: 0; grid-template-columns: 1fr; padding: 42px 28px 26px; border-radius: 30px; text-align: center; }
   .intro { margin-inline: auto; }
-  .scene { min-height: 350px; order: -1; transform: scale(.82); margin: -34px 0 -20px; }
-  .message { margin-bottom: 10px; }
+  .scene { min-height: 430px; order: -1; transform: scale(.86); margin: -28px 0 -8px; }
+  .message { max-width: 108%; font-size: 17px; }
   .sparkle-two { display: none; }
 }
