@@ -14,6 +14,8 @@ button.addEventListener("click", () => {
   const next = messages[Math.floor(Math.random() * messages.length)];
   message.textContent = next;
   bunny.classList.remove("happy");
+  message.classList.remove("pop");
   void bunny.offsetWidth;
   bunny.classList.add("happy");
+  message.classList.add("pop");
 });
